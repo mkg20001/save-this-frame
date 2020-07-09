@@ -1,21 +1,26 @@
 div(class="stf-overlay")
-  div(class="main")
-    div(class="header")
+  div(class="stf-main")
+    div(class="stf-header")
       h1 Save This Frame!
-    div(class="settings")
+      div(class="stf-close")
+        <svg height="512px" fill="#fff" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z"/></svg>
+    div(class="stf-settings")
       h1 Size
-      <input type="radio" id="hd" name="size" value="hd" checked>
-      <label for="hd">High Quality / HD</label><br>
-      <input type="radio" id="as-is" name="size" value="as-is">
-      <label for="as-is">As Visible</label><br>
-      <input type="radio" id="screen" name="size" value="screen">
-      <label for="screen">Screen Size</label><br>
-      <input type="radio" id="custom" name="size" value="custom">
-      <label for="custom">Custom (WIP)</label>
+      <input type="radio" id="stf-hd" name="stf-size" value="hd">
+      <label for="stf-hd">High Quality / HD</label><br>
+      <input type="radio" id="stf-as-is" name="stf-size" value="as-is" checked>
+      <label for="stf-as-is">As Visible</label><br>
+      <input type="radio" id="stf-screen" name="stf-size" value="screen">
+      <label for="stf-screen">Screen Size</label><br>
+      <input type="radio" id="stf-custom" name="stf-size" value="custom">
+      <label for="stf-custom">Custom (WIP)</label><br>
+      br
+
       h1 Format
-      <input type="radio" id="png" name="format" value="png" checked>
-      <label for="png">PNG</label><br>
-      <input type="radio" id="jpg" name="format" value="jpg">
-      <label for="jpg">JPG</label>
+      <input type="radio" id="stf-png" name="stf-format" value="png" checked>
+      <label for="stf-png">PNG</label><br>
+      <input type="radio" id="stf-jpg" name="stf-format" value="jpg">
+      <label for="stf-jpg">JPG</label><br>
+      br
       
       p(class="the-button") Save Screenshot

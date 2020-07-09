@@ -8,4 +8,7 @@ const SRC = path.join(__dirname, 'src')
 const INJECT = path.join(SRC, 'inject.js')
 const inject = String(fs.readFileSync(INJECT))
 
-fs.writeFileSync(INJECT, inject.replace(/^ *const overlay = .+$/m, `const overlay = ${JSON.stringify(pug.renderFile(path.join(SRC, 'overlay.pug')))};`))
+fs.writeFileSync(INJECT, inject
+  .replace(/^ *const overlay = .+$/m, `const overlay = ${JSON.stringify(pug.renderFile(path.join(SRC, 'overlay.pug')))};`)
+  .replace(/^ *const ytpitem = .+$/m, `const ytpitem = ${JSON.stringify(pug.renderFile(path.join(SRC, 'ytp-item.pug')))};`)
+)
