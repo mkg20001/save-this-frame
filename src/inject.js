@@ -77,14 +77,52 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
   }
 
   function _doCapture (video, settings) {
+    let dWidth = 0
+    let dHeight = 0
+
+    switch (settings.size) {
+      case 'screen': {
+        dWidth = screen.width
+        dHeight = screen.height
+        break
+      }
+      case 'hd': {
+        dWidth = 1920
+        dHeight = 1080
+        break
+      }
+      case 'custom':
+      case 'as-is':
+      default: {
+        dWidth = video.width
+        dHeight = video.height
+      }
+    }
+
+    // adjust dimensions
+
+    const aspectRatio = (video.width / video.height)
+    // let newHeight = (newWidth / aspectRatio)
+    // let newWidth = (newHeight * aspectRatio)
+
+    let ndWidth
+    let ndHeight
+
+    if (video.width > video.height) {
+      ndWidth = dWidth
+      ndHeight = (dWidth / aspectRatio)
+    } else {
+      ndWidth = (dHeight * aspectRatio)
+      ndHeight = dHeight
+    }
+
     const canvas = document.createElement('canvas')
 
-    // TODO: use size from settings
-    canvas.width = video.videoWidth
-    canvas.height = video.videoHeight
+    canvas.width = ndWidth
+    canvas.height = ndHeight
 
     const canvasContext = canvas.getContext('2d')
-    canvasContext.drawImage(video, 0, 0)
+    canvasContext.drawImage(video, 0, 0, ndWidth, ndHeight)
 
     const picture = canvas.toDataURL('image/' + settings.format)
 
