@@ -32,6 +32,21 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
 
   const $ = require('jquery')
 
+  let lastEv
+
+  $('body').on('mousedown', _lastEv => {
+    log('mousedown')
+    lastEv = _lastEv
+  })
+
+  chrome.runtime.onMessage.addListener(
+    function (request) {
+      if (request.stf && request.event === 'triggerUi') {
+        log('trigger ui recieved')
+        doCapture(lastEv.target)
+      }
+    })
+
   function collection2array (col) {
     const out = []
 
@@ -42,11 +57,11 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
     return out
   }
 
-  const a = document.createElement('a')
-  document.body.appendChild(a)
-  a.style = 'display: none'
-
   async function forceDownload (_url, fileName) {
+    const a = document.createElement('a')
+    document.body.appendChild(a)
+    a.style = 'display: none'
+
     const res = await window.fetch(_url)
     // const blob = new Blob((await res.arrayBuffer()), { type: 'octet/stream' })
     const blob = await res.blob()
@@ -55,6 +70,8 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
     a.download = fileName
     a.click()
     window.URL.revokeObjectURL(url)
+
+    $(a).remove()
   }
 
   function _doCapture (video, settings) {
@@ -131,12 +148,12 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
       const intv = setInterval(ytpAttach, 200)
 
       function ytpAttach () {
-        log('at')
+        log('ytp attach...')
         let YTP = collection2array(document.getElementsByClassName('ytp-panel-menu'))
         YTP = YTP.filter(el => el.children.length && el.style[0])[0]
 
         if (YTP) {
-          log('at ok')
+          log('ytp attach ok')
           const el = $(ytpitem)
           YTP = $(YTP)
           YTP.parent().parent().css('height', YTP.height() + 128)

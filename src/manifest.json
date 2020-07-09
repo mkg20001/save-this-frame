@@ -26,6 +26,7 @@
     "storage",
     "activeTab",
     "tabs",
+    "contextMenus",
     "https://*/*",
     "http://*/*"
   ],
