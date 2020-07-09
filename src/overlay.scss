@@ -1,5 +1,7 @@
 .stf-overlay {
-  z-index: 20000;
+  @import "./reset";
+
+  z-index: 200000;
   position: fixed;
   top: 0;
   left: 0;
@@ -54,8 +56,19 @@
     }
 
     .stf-settings {
+      display: block;
+
       * {
         font-size: 1.5em;
+        display: block;
+      }
+
+      label {
+        display: flex;
+      }
+
+      label input {
+        margin-right: 6px;
       }
 
       overflow-y: scroll;
@@ -70,6 +83,10 @@
       border-radius: 6px;
       padding: 1em;
       cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
