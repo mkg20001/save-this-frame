@@ -1,0 +1,42 @@
+{
+  "name": "Save This Frame!",
+  "version": "0.1",
+  "description": "Save the current video frame",
+  "page_action": {
+    "default_popup": "popup.pug",
+    "default_icon": {
+      "16": "assets/logo16.png",
+      "32": "assets/logo32.png",
+      "48": "assets/logo48.png",
+      "128": "assets/logo128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/logo16.png",
+    "32": "assets/logo32.png",
+    "48": "assets/logo48.png",
+    "128": "assets/logo128.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "declarativeContent",
+    "storage",
+    "activeTab",
+    "tabs",
+    "https://*/*",
+    "http://*/*"
+  ],
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["inject.js"],
+      "css": ["overlay.scss"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
+}

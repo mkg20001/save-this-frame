@@ -1,0 +1,42 @@
+{
+  "name": "save-this-frame",
+  "version": "0.0.1",
+  "description": "Save the current video frame",
+  "main": "src/manifest.json",
+  "scripts": {
+    "test": "mocha -A",
+    "cov": "nyc mocha",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "start": "parcel start src/manifest.json --no-hmr ",
+    "build": "rm -rf dist && parcel build src/manifest.json  "
+  },
+  "keywords": ["chrome", "extension", "video", "frame", "screenshot"],
+  "template": {
+    "extends": ["node", "eslint", "parcel"],
+    "parcel": {
+      "entry": "src/manifest.json",
+      "startFlags": "--no-hmr"
+    }
+  },
+  "author": "Maciej Krüger <mkg20001@gmail.com>",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "eslint": "*",
+    "eslint-config-aegir-standalone": "*",
+    "eslint-config-oclif": "*",
+    "mkgs-tool": "^0.1.9",
+    "mocha": "*",
+    "nyc": "*",
+    "parcel": "^1.12.4",
+    "sass": "^1.26.10"
+  },
+  "dependencies": {
+    "pug": "^3.0.0",
+    "babel-polyfill": "^6.26.0",
+    "jquery": "^3.5.1",
+    "parcel-plugin-web-extension": "^1.6.1"
+  }
+}

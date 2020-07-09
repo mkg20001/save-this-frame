@@ -1,0 +1,56 @@
+.stf-overlay {
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .main {
+    background: #dfdfdf;
+    width: 512px;
+    height: 512px;
+
+    .header {
+      background: #4f4f4f;
+
+      height: 64px;
+      max-height: 64px;
+      min-height: 64px;
+
+      h1 {
+        color: white;
+        font-size: 4em !important;
+      }
+    }
+
+    .settings {
+      * {
+        font-size: 1.5em;
+      }
+
+      overflow-y: scroll;
+      padding: 1em;
+    }
+
+    .the-button {
+      background: #4f4f4f;
+      color: white;
+      font-weight: bold;
+      font-size: 3em;
+      border-radius: 6px;
+      padding: 1em;
+    }
+  }
+}
