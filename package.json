@@ -12,9 +12,19 @@
     "build": "rm -rf dist && parcel build src/manifest.json  ",
     "zip": "npm run build && rm -rf *.zip && cd dist && zip -r ../save-this-frame.zip ."
   },
-  "keywords": ["chrome", "extension", "video", "frame", "screenshot"],
+  "keywords": [
+    "chrome",
+    "extension",
+    "video",
+    "frame",
+    "screenshot"
+  ],
   "template": {
-    "extends": ["node", "eslint", "parcel"],
+    "extends": [
+      "node",
+      "eslint",
+      "parcel"
+    ],
     "parcel": {
       "entry": "src/manifest.json",
       "startFlags": "--no-hmr"
@@ -35,9 +45,10 @@
     "sass": "^1.26.10"
   },
   "dependencies": {
-    "pug": "^3.0.0",
     "babel-polyfill": "^6.26.0",
     "jquery": "^3.5.1",
-    "parcel-plugin-web-extension": "^1.6.1"
+    "parcel-plugin-web-extension": "^1.6.1",
+    "pug": "^3.0.0",
+    "sanitize-filename": "^1.6.3"
   }
 }

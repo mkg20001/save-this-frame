@@ -30,6 +30,8 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
 
   log('loading')
 
+  const sanitize = require('sanitize-filename')
+
   const $ = require('jquery')
 
   let lastEv
@@ -86,8 +88,7 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
 
     const picture = canvas.toDataURL('image/' + settings.format)
 
-    // TODO: include page title in filename
-    forceDownload(picture, `screenshot.${settings.format}`)
+    forceDownload(picture, sanitize(`Screenshot ${document.title}.${settings.format}`))
   }
 
   function clearUI () {
@@ -109,7 +110,7 @@ const overlay = '<div class="stf-overlay"><div class="stf-main"><div class="stf-
     const UI = $(overlay)
     $('body').append(UI)
 
-    const getR = n => UI.find('input[name="' + n + '"]').val()
+    const getR = n => UI.find('input[name="' + n + '"]:checked').val()
 
     const post = () => {
       if (!wasPaused) {
