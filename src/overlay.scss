@@ -1,5 +1,5 @@
 .stf-overlay {
-  z-index: 2000;
+  z-index: 20000;
   position: fixed;
   top: 0;
   left: 0;
@@ -23,9 +23,11 @@
     background: #dfdfdf;
     width: 512px;
     height: 512px;
+    border-radius: 6px;
 
     .stf-header {
       background: #4f4f4f;
+      border-radius: 6px 6px 0 0;
 
       height: 64px;
       max-height: 64px;
