@@ -22,24 +22,24 @@ if (chrome.declarativeContent.RequestContentScript && false) { // TODO: get dyna
   }))
 }
 
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === 'stf') {
+    const tabId = tab.id
+    const { frameId } = info
+
+    chrome.tabs.sendMessage(tabId, {
+      stf: true,
+      event: 'triggerUi'
+    }, { frameId })
+  }
+})
+
 chrome.runtime.onInstalled.addListener(function (details) {
   chrome.contextMenus.removeAll()
   chrome.contextMenus.create({
     id: 'stf',
     title: 'Save This Frame!',
     contexts: ['video']
-  })
-
-  chrome.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === 'stf') {
-      const tabId = tab.id
-      const { frameId } = info
-
-      chrome.tabs.sendMessage(tabId, {
-        stf: true,
-        event: 'triggerUi'
-      }, { frameId })
-    }
   })
 
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
